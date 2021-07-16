@@ -1,0 +1,27 @@
+//当前规则文件用于计算商品打折率
+package product
+import com.drools.entity.ProductEntity
+
+/**
+    当前规则文件中的规则主要分为三类
+    1、当商品类型是DIAMOND时,打折为15%
+    2、当商品类型是GOLD时，打折为25%
+**/
+
+//1-当商品类型是DIAMOND时,打折为15%
+rule Offer4Diamond
+    when
+        productObject:ProductEntity(type == ProductEntity.DIAMOND)
+    then
+        productObject.setDiscount(15);
+        System.out.println("-----匹配到规则Offer4Diamond");
+    end
+
+//2-当商品类型是GOLD时，打折为25%
+rule Offer4Gold
+    when
+        productObject: ProductEntity(type == ProductEntity.GOLD)
+    then
+        productObject.setDiscount(25);
+        System.out.println("-----匹配到规则Offer4Gold");
+    end
